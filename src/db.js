@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    // TODO DON"T COMMIT ME
+    // TODO make repo private
     apiKey: "AIzaSyCb6dp9i1xCKs2JDYtbgX4ukDOzQDBmCck",
     authDomain: "test-denys-26331.firebaseapp.com",
     projectId: "test-denys-26331",

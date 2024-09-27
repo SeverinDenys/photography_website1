@@ -4,30 +4,26 @@ import { getDoc, updateDoc, doc } from "firebase/firestore";
 
 import './App.css';
 
-const DOCUMENT_ID = "6tdyRU2STWjSNCwz20qI";
+const getUserId = () => window.location.host.split('.')[0];
 
 function App() {
-  const [data, setData] = useState({ title: 'MY Title', description: 'My description' });
+  const [data, setData] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-      // try {
-      // TODO show why we need ID.
-
-      //   const docRef = doc(db, "test", DOCUMENT_ID);
-      //   const docSnap = await getDoc(docRef);
-      //   if (docSnap.exists()) {
-      //     setData(docSnap.data());
-      //   } else {
-      //     console.log("No such document!");
-      //   }
-      // } catch (error) {
-      //   console.error("Error fetching document: ", error);
-      // }
-  //   };
-  //
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const docRef = doc(db, "test", getUserId());
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching document: ", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   // const changeData = async () => {
   //   const docRef = doc(db, "test", data.id);
@@ -45,13 +41,16 @@ function App() {
 
   return (
     <div className="App">
+      <h1>PUBLIC</h1>
       {
-        data && <div>
-         <h1> {data.title}</h1>
-         <h1> {data.description}</h1>
-        </div>
+        data?.title && <h1> {data.title}</h1>
       }
-      {/*<button onClick={changeData}>Change</button>*/}
+      {
+          data?.description && <h2> {data.description}</h2>
+      }
+      {
+          data?.img_url && <img src={data.img_url}/>
+      }
     </div>
   );
 }
