@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { db } from "./db";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import "./styles/main.scss";
+import Header from "./components/header/Header";
+
 const getUserId = () => window.location.host.split(".")[0];
 function App() {
   const [data, setData] = useState(null);
@@ -24,20 +26,16 @@ function App() {
 
   console.log("data", data);
 
-  return (
-    <div className="App">
-      {/* <h1>PUBLIC</h1> */}
-      {data?.about_me_title && <h1> {data.about_me_title}</h1>}
-      {data?.main_picture1 && <img src={data.main_picture1} />}
-      {data?.main_title && <h2> {data.main_title}</h2>}
+  // PUBLIC
 
-      {data?.about_me_sub_title && (
-        <h2> {data.about_me_sub_title}</h2>
-      )}
-      {data?.about_me_description && (
-        <h2> {data.about_me_description}</h2>
-      )}
-    </div>
+  return (
+    <>
+      <div className="App">
+        <div className="container">
+          <Header data={data} />
+        </div>
+      </div>
+    </>
   );
 }
 
