@@ -3,6 +3,7 @@ import { db } from "./db";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import "./styles/main.scss";
 import Header from "./components/header/Header";
+import About from "./components/about/About";
 
 const getUserId = () => window.location.host.split(".")[0];
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <div className="App">
         <div className="container">
           <Header data={data} />
+          <About data={data} />
         </div>
       </div>
     </>

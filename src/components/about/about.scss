@@ -1,0 +1,13 @@
+.aboutMe {
+  &__title {
+    text-align: center;
+    font-size: 4rem;
+    width: 80%;
+    margin: 5rem auto;
+   font-weight: 400;
+  }
+  &__description {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+}
