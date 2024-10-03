@@ -1,0 +1,14 @@
+.photoSessionFile {
+  margin: 1rem auto;
+  width: 85%;
+  &__img {
+    margin-top: 2rem;
+    width: 100%;
+    cursor: pointer;
+  }
+  &__title {
+    margin-top: 2rem;
+    font-size: 3rem;
+    font-weight: 100;
+  }
+}
