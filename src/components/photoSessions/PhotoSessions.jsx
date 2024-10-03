@@ -1,12 +1,5 @@
 import { React, useEffect, useState } from "react";
-import {
-  getDoc,
-  updateDoc,
-  doc,
-  collection,
-  query,
-  getDocs,
-} from "firebase/firestore";
+import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../db";
 
 import { getUserId } from "../../App";
@@ -14,6 +7,7 @@ import PhotoSessionFile from "../photoSessionFile/PhotoSessionFile";
 
 export default function PhotoSessions() {
   const [photoData, setPhotoData] = useState([]);
+
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
@@ -27,8 +21,8 @@ export default function PhotoSessions() {
             fetchedData.push({ id: doc.id, ...doc.data() });
           }
         });
-        console.log(fetchedData);
-        setPhotoData(fetchedData); // By setting setPhotoData(fetchedData[0]), you tell React, "Use the first document's data to show the title and subtitle."
+
+        setPhotoData(fetchedData);
       } catch (error) {
         console.error("Error fetching photos: ", error);
       }
