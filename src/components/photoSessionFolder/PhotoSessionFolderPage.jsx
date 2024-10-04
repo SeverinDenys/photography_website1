@@ -1,15 +1,46 @@
 import React, { useEffect, useState } from "react";
-
-import { useLocation } from "react-router-dom";
+import { getUserId } from "../../App";
+import {
+  collection,
+  query,
+  getDocs,
+  getDoc,
+  doc,
+} from "firebase/firestore";
+import { db } from "../../db";
+import { useParams } from "react-router-dom";
 
 export default function PhotoSessionFolderPage() {
-  const location = useLocation();
-  const photoData = location.state?.photo;
+  const [photoSessionInfo, setPhotoSessionInfo] = useState(null);
+  const { photoSessionId } = useParams(); // get from index.js rout
+  console.log(photoSessionId);
+
+  const fetchPhotoSessionInfo = async () => {
+    try {
+      const docRef = doc(db, "photo_sessions", photoSessionId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        console.log(docSnap.data());
+
+        setPhotoSessionInfo({ id: docSnap.id, ...docSnap.data() });
+      } else {
+        console.log("No such document!");
+        setPhotoSessionInfo(null);
+      }
+    } catch (error) {
+      console.error("Error fetching photo session: ", error);
+    }
+  };
+  useEffect(() => {
+    fetchPhotoSessionInfo();
+  }, []);
+
   return (
     <div className="PhotoSessionFolderPage">
-      {photoData?.title && (
+      {photoSessionInfo?.title && (
         <h2 className="PhotoSessionFolderPage__title">
-          {photoData.title}
+          {photoSessionInfo.title}
         </h2>
       )}
 

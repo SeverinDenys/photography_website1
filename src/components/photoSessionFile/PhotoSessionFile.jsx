@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function PhotoSessionFile({ photo, id }) {
   const navigate = useNavigate();
   const navToPhotoSessionFolder = () => {
-    navigate(`/PhotoSessionFolderPage/${id}`, { state: { photo } });
+    navigate(`/PhotoSessionFolderPage/${id}`);
   };
   return (
     <div className="photoSessionFile">
@@ -18,10 +18,8 @@ export default function PhotoSessionFile({ photo, id }) {
         />
       )}
 
-      {photo?.description && (
-        <h2 className="photoSessionFile__title">
-          {photo.description}
-        </h2>
+      {photo?.title && (
+        <h2 className="photoSessionFile__title">{photo.title}</h2>
       )}
     </div>
   );

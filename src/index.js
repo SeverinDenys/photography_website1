@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/PhotoSessionFolderPage/:id",
+    path: "/PhotoSessionFolderPage/:photoSessionId",
     element: <PhotoSessionFolderPage />,
     errorElement: <ErrorPage />,
   },

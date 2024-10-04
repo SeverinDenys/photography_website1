@@ -17,20 +17,6 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    // const fetchPhotos = async () => {
-    //   try {
-    //     const q = query(collection(db, "photo_sessions"));
-    //     const querySnapshot = await getDocs(q);
-    //     const fetchedData = [];
-    //     querySnapshot.forEach((doc) => {
-    //       const data = doc.data();
-    //       if (data.userId === getUserId()) {
-    //         fetchedData.push({ id: doc.id, ...doc.data() });
-    //       }
-    //     });
-    //     console.log(fetchedData);
-    //   } catch {}
-    // };
     const fetchData = async () => {
       try {
         const docRef = doc(db, "general_info", getUserId());
