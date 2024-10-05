@@ -11,9 +11,8 @@ import { db } from "../../db";
 import { useParams } from "react-router-dom";
 
 export default function PhotoSessionFolderPage() {
-  const [photoSessionInfo, setPhotoSessionInfo] = useState(null);
+  const [photoSessionInfo, setPhotoSessionInfo] = useState([]); // it didn't allow me to render with 'null'
   const { photoSessionId } = useParams(); // get from index.js rout
-  console.log(photoSessionId);
 
   const fetchPhotoSessionInfo = async () => {
     try {
@@ -48,20 +47,15 @@ export default function PhotoSessionFolderPage() {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit.
         Illum architecto ipsam dicta ratione tempora?
       </p>
-      {/* <div className="PhotoSessionFolderPage__photos">
-        <div className="folderPagePhoto">
-          <img src={me} alt="some" />
-        </div>
-        <div className="folderPagePhoto">
-          <img src={me} alt="some" />
-        </div>
-        <div className="folderPagePhoto">
-          <img src={me} alt="some" />
-        </div>
-        <div className="folderPagePhoto">
-          <img src={me} alt="some" />
-        </div>
-      </div> */}
+
+      <div className="PhotoSessionFolderPage__photos">
+        {photoSessionInfo.photos &&
+          photoSessionInfo.photos.map((photoUrl, index) => (
+            <div key={index} className="folderPagePhoto">
+              <img src={photoUrl} alt={"photo"} />
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

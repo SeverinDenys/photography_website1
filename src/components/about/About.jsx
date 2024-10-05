@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import AuthorInfo from "./AuthorInfo/AuthorInfo";
 
 export default function About({ data }) {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export default function About({ data }) {
           </div>
         )}
       </div>
+      <AuthorInfo data={data}/>
       <div className="myWorks">
         <button className="myWorks__Btn" onClick={navToPhotoSessions}>
           My Works
