@@ -11,6 +11,7 @@ import {
 import "./styles/main.scss";
 import Header from "./components/header/Header";
 import About from "./components/about/About";
+import Footer from "./components/footer/Footer";
 
 export const getUserId = () => window.location.host.split(".")[0];
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <div className="container">
           <Header data={data} />
           <About data={data} />
+          <Footer data={data}/>
         </div>
       </div>
     </>

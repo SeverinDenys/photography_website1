@@ -26,10 +26,6 @@ export default function AuthorInfo({ data }) {
         {data?.author.author_description2 && (
           <p>{data?.author.author_description2}</p>
         )}
-
-        {data?.author.author_description3 && (
-          <p>{data?.author.author_description3}</p>
-        )}
       </div>
     </div>
   );

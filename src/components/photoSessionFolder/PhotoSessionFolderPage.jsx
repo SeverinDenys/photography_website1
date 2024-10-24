@@ -11,7 +11,7 @@ import { db } from "../../db";
 import { useParams } from "react-router-dom";
 
 export default function PhotoSessionFolderPage() {
-  const [photoSessionInfo, setPhotoSessionInfo] = useState([]); // it didn't allow me to render with 'null'
+  const [photoSessionInfo, setPhotoSessionInfo] = useState([]);
   const { photoSessionId } = useParams(); // get from index.js rout
 
   const fetchPhotoSessionInfo = async () => {
@@ -59,3 +59,6 @@ export default function PhotoSessionFolderPage() {
     </div>
   );
 }
+
+
+// kjhsahksahfksajf

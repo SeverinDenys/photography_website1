@@ -1,0 +1,121 @@
+.footer {
+  background: transparent;
+
+  padding: 4rem 0;
+  margin-top: 4rem;
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
+
+    & input {
+      width: 100%;
+      padding: 2rem;
+      margin: 0.5rem 0;
+      border: 2px solid #e5e5e5;
+      border-radius: 0;
+      background: transparent;
+      font-size: 1rem;
+      font-family: serif;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #333;
+      }
+
+      &::placeholder {
+        color: #666;
+        font-size: 2rem;
+        font-style: italic;
+      }
+    }
+
+    & button {
+      width: auto;
+      padding: 0.8rem 2.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid #333;
+      background: transparent;
+      color: #333;
+      font-size: 2rem;
+      font-family: serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #333;
+        color: #fff;
+      }
+    }
+  }
+
+  &__container-follow {
+    margin: 3rem 0;
+    text-align: center;
+
+    & h3 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    & .follow__icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+
+      & img {
+        width: 3rem;
+        height: 3rem;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__container-contact {
+    text-align: center;
+    margin-top: 3rem;
+
+    & h3 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    & .info {
+      &__address,
+      &__phone {
+        font-size: 1.5rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+        font-style: italic;
+      }
+
+      &__email {
+        margin-top: 1rem;
+        font-size: 2rem;
+        color: #333;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+    }
+  }
+}
