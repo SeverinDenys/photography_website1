@@ -10,6 +10,7 @@ import { db } from "../../db";
 
 import { getUserId } from "../../App";
 import PhotoSessionFile from "../photoSessionFile/PhotoSessionFile";
+import Footer from "../footer/Footer";
 
 export default function PhotoSessions() {
   const [photoSessions, setPhotoSessions] = useState([]);
@@ -54,24 +55,27 @@ export default function PhotoSessions() {
     fetchGeneralInfo();
   }, []);
   return (
-    <div className="photoSessions">
-      <div className="photoSessions__title">
-        {generalInfo?.title && (
-          <h2 className="title">{generalInfo.title}</h2>
-        )}
-        {generalInfo?.sub_title && (
-          <h2 className="subTitle">{generalInfo.sub_title}</h2>
-        )}
-      </div>
+    <>
+      <div className="photoSessions">
+        <div className="photoSessions__title">
+          {generalInfo?.title && (
+            <h2 className="title">{generalInfo.title}</h2>
+          )}
+          {generalInfo?.sub_title && (
+            <h2 className="subTitle">{generalInfo.sub_title}</h2>
+          )}
+        </div>
 
-      {photoSessions.map((photo) => (
-        <PhotoSessionFile
-          key={photo.id}
-          photo={photo}
-          id={photo.id}
-        />
-      ))}
-    </div>
+        {photoSessions.map((photo) => (
+          <PhotoSessionFile
+            key={photo.id}
+            photo={photo}
+            id={photo.id}
+          />
+        ))}
+      </div>
+      <Footer />
+    </>
   );
 }
 

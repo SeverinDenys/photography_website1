@@ -1,18 +1,28 @@
 .aboutMe {
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 3rem;
+  text-align: justify; /* Keep text justified */
+  width: 90%;
+  padding: 2rem;
+  margin: 2rem auto;
+
   &__title {
     text-align: center;
-    font-size: 4rem;
-    width: 80%;
-    margin: 5rem auto;
-    font-weight: 400;
-  }
-  &__description {
     font-size: 3rem;
+    font-weight: bold;
+    font-family: "Times New Roman", serif;
+    color: black;
+    margin: 3rem auto;
+  }
+
+  &__description {
+    font-size: 1.7rem;
+    font-family: Georgia, serif; /* Consistent serif font */
+    color: #444;
     margin-top: 2rem;
+    width: 90%;
+    line-height: 1.6;
     p {
-      padding: 0 5px;
+      padding: 0 1rem;
     }
   }
 }
@@ -21,13 +31,16 @@
   text-align: center;
   margin: 3rem;
   &__Btn {
-    font-style: italic;
-    font-size: 3rem;
-    border: none;
-    padding: 1rem;
-    border-radius: 15px;
+    font-style: normal;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    border: 1px solid black;
+    padding: 1rem 2rem;
+    border-radius: 0;
     cursor: pointer;
-    color: $main-color;
-    background: skyblue;
+    color: black;
+    background: white;
+    text-transform: uppercase;
+    box-shadow: none;
   }
 }
