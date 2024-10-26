@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getUserId } from "../../App";
+ 
 import {
-  collection,
-  query,
-  getDocs,
+  
   getDoc,
   doc,
 } from "firebase/firestore";

@@ -10,6 +10,7 @@ import {
 import ErrorPage from "./ErrorPage";
 import PhotoSessions from "./components/photoSessions/PhotoSessions";
 import PhotoSessionFolderPage from "./components/photoSessionFolder/PhotoSessionFolderPage"; // Import your PhotoSessionFolderPage component
+import PageWithoutUserId from "./components/pageWithoutUserId/PageWithoutUserId";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
   {
     path: "/PhotoSessionFolderPage/:photoSessionId",
     element: <PhotoSessionFolderPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/PageWithoutUserId",
+    element: <PageWithoutUserId />,
     errorElement: <ErrorPage />,
   },
 ]);

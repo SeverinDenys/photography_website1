@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react";
 import { db } from "./db";
-import {
-  getDoc,
-  updateDoc,
-  doc,
-  collection,
-  query,
-  getDocs,
-} from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import "./styles/main.scss";
 import Header from "./components/header/Header";
 import About from "./components/about/About";
 import Footer from "./components/footer/Footer";
 
-export const getUserId = () => window.location.host.split(".")[0];
+export const getUserId = () => {
+  const subdomain = window.location.host.split(".")[0];
+
+  if (subdomain.startsWith("localhost")) return null;
+  else {
+    return subdomain;
+  }
+};
+
+ 
+
 function App() {
   const [data, setData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +35,11 @@ function App() {
         console.error("Error fetching document: ", error);
       }
     };
-    fetchData();
+    if (getUserId()) {
+      fetchData();
+    } else {
+      navigate("/PageWithoutUserId");
+    }
   }, []);
 
   // PUBLIC
@@ -41,7 +50,7 @@ function App() {
         <div className="container">
           <Header data={data} />
           <About data={data} />
-          <Footer data={data}/>
+          <Footer data={data} />
         </div>
       </div>
     </>

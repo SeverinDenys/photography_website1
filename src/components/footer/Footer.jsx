@@ -7,12 +7,6 @@ export default function Footer() {
   return (
     <>
       <div className="footer">
-        <div className="footer__container">
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="text" placeholder="Message" />
-          <button>Submit</button>
-        </div>
         <div className="footer__container-follow">
           <h3>write Me</h3>
           <div className="follow__icons">
