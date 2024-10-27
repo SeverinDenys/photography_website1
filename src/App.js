@@ -16,32 +16,48 @@ export const getUserId = () => {
   }
 };
 
- 
-
 function App() {
   const [data, setData] = useState(null);
+  const [footerData, setFooterData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const userId = getUserId();
+    if (!userId) {
+      navigate("/PageWithoutUserId");
+      return;
+    }
+
     const fetchData = async () => {
       try {
-        const docRef = doc(db, "general_info", getUserId());
+        const docRef = doc(db, "general_info", userId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          const data = docSnap.data();
-          setData(data);
+          setData(docSnap.data());
         }
       } catch (error) {
-        console.error("Error fetching document: ", error);
+        console.error(
+          "Error fetching general_info document: ",
+          error
+        );
       }
     };
-    if (getUserId()) {
-      fetchData();
-    } else {
-      navigate("/PageWithoutUserId");
-    }
-  }, []);
 
+    const fetchFooterData = async () => {
+      try {
+        const docRef = doc(db, "footer", userId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setFooterData(docSnap.data());
+        }
+      } catch (error) {
+        console.error("Error fetching footer document: ", error);
+      }
+    };
+
+    fetchData();
+    fetchFooterData();
+  }, []);
   // PUBLIC
 
   return (
@@ -50,7 +66,7 @@ function App() {
         <div className="container">
           <Header data={data} />
           <About data={data} />
-          <Footer data={data} />
+          <Footer footerData={footerData} />
         </div>
       </div>
     </>

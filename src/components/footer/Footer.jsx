@@ -3,7 +3,8 @@ import gmailIcon from "../../images/icons8-gmail.svg";
 import linkedIn from "../../images/icons8-linkedin.svg";
 import whatsUp from "../../images/icons8-whatsapp.svg";
 
-export default function Footer() {
+export default function Footer({ footerData }) {
+  console.log(footerData);
   return (
     <>
       <div className="footer">
@@ -19,15 +20,21 @@ export default function Footer() {
           <h3>Contact Me</h3>
           <div className="info">
             <div className="info__address">
-              <p>123 Main Street, New York, NY 10012</p>
+              {footerData.footer_contact_me.footer_address && (
+                <p>{footerData.footer_contact_me.footer_address}</p>
+              )}
             </div>
 
             <div className="info__phone">
-              <p>0.000.000.0.00</p>
+              {footerData.footer_contact_me.footer_phone && (
+                <p>{footerData.footer_contact_me.footer_phone}</p>
+              )}
             </div>
 
             <div className="info__email">
-              <p>info@example.com</p>
+              {footerData.footer_contact_me.footer_email && (
+                <p>{footerData.footer_contact_me.footer_email}</p>
+              )}
             </div>
           </div>
         </div>
