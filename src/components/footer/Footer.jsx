@@ -11,7 +11,9 @@ export default function Footer({ footerData }) {
         <div className="footer__container-follow">
           <h3>write Me</h3>
           <div className="follow__icons">
-            <img src={gmailIcon} alt="gmail" />
+            <a href="mailto:severindenys367@gmail.com">
+              <img src={gmailIcon} alt="gmail" />
+            </a>
             <img src={linkedIn} alt="linkedin" />
             <img src={whatsUp} alt="whatsUp" />
           </div>
@@ -20,19 +22,19 @@ export default function Footer({ footerData }) {
           <h3>Contact Me</h3>
           <div className="info">
             <div className="info__address">
-              {footerData.footer_contact_me.footer_address && (
+              {footerData && (
                 <p>{footerData.footer_contact_me.footer_address}</p>
               )}
             </div>
 
             <div className="info__phone">
-              {footerData.footer_contact_me.footer_phone && (
+              {footerData && (
                 <p>{footerData.footer_contact_me.footer_phone}</p>
               )}
             </div>
 
             <div className="info__email">
-              {footerData.footer_contact_me.footer_email && (
+              {footerData && (
                 <p>{footerData.footer_contact_me.footer_email}</p>
               )}
             </div>
