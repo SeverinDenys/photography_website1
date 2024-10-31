@@ -15,6 +15,8 @@ import Footer from "../footer/Footer";
 export default function PhotoSessions() {
   const [photoSessions, setPhotoSessions] = useState([]);
   const [generalInfo, setGeneralInfo] = useState(null);
+  const [footerData, setFooterData] = useState(null);
+
   const fetchPhotos = async () => {
     try {
       const q = query(collection(db, "photo_sessions"));
@@ -50,9 +52,24 @@ export default function PhotoSessions() {
       console.error("Error fetching photo session: ", error);
     }
   };
+
+  const fetchFooterData = async () => {
+    try {
+      const userId = getUserId();
+      const docRef = doc(db, "footer", userId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setFooterData(docSnap.data());
+      }
+    } catch (error) {
+      console.error("Error fetching footer data: ", error);
+    }
+  };
+
   useEffect(() => {
     fetchPhotos();
     fetchGeneralInfo();
+    fetchFooterData();
   }, []);
   return (
     <>
@@ -74,9 +91,7 @@ export default function PhotoSessions() {
           />
         ))}
       </div>
-      <Footer />
+      <Footer footerData={footerData} />
     </>
   );
 }
-
-// why i can't just write photoData.title , sub_title to get the title? why i need to write [0] specifically

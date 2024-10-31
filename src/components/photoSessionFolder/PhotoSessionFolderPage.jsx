@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
- 
-import {
-  
-  getDoc,
-  doc,
-} from "firebase/firestore";
+
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../db";
 import { useParams } from "react-router-dom";
-
+import { getUserId } from "../../App";
+import Footer from "../footer/Footer";
 export default function PhotoSessionFolderPage() {
   const [photoSessionInfo, setPhotoSessionInfo] = useState([]);
+  const [footerData, setFooterData] = useState(null);
   const { photoSessionId } = useParams(); // get from index.js rout
 
   const fetchPhotoSessionInfo = async () => {
@@ -29,34 +27,52 @@ export default function PhotoSessionFolderPage() {
       console.error("Error fetching photo session: ", error);
     }
   };
+
+  const fetchFooterData = async () => {
+    try {
+      const userId = getUserId();
+      const docRef = doc(db, "footer", userId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setFooterData(docSnap.data());
+      }
+    } catch (error) {
+      console.error("Error fetching footer data: ", error);
+    }
+  };
+
   useEffect(() => {
     fetchPhotoSessionInfo();
+    fetchFooterData();
   }, []);
 
   return (
-    <div className="PhotoSessionFolderPage">
-      {photoSessionInfo?.title && (
-        <h2 className="PhotoSessionFolderPage__title">
-          {photoSessionInfo.title}
-        </h2>
-      )}
+    <>
+      <div className="PhotoSessionFolderPage">
+        {photoSessionInfo?.title && (
+          <h2 className="PhotoSessionFolderPage__title">
+            {photoSessionInfo.title}
+          </h2>
+        )}
 
-      <p className="PhotoSessionFolderPage__description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        Illum architecto ipsam dicta ratione tempora?
-      </p>
+        {photoSessionInfo?.description && (
+          <p className="PhotoSessionFolderPage__description">
+            {photoSessionInfo.description}
+          </p>
+        )}
 
-      <div className="PhotoSessionFolderPage__photos">
-        {photoSessionInfo.photos &&
-          photoSessionInfo.photos.map((photoUrl, index) => (
-            <div key={index} className="folderPagePhoto">
-              <img src={photoUrl} alt={"photo"} />
-            </div>
-          ))}
+        <div className="PhotoSessionFolderPage__photos">
+          {photoSessionInfo.photos &&
+            photoSessionInfo.photos.map((photoUrl, index) => (
+              <div key={index} className="folderPagePhoto">
+                <img src={photoUrl} alt={"photo"} />
+              </div>
+            ))}
+        </div>
       </div>
-    </div>
+      <Footer footerData={footerData} />
+    </>
   );
 }
-
 
 // kjhsahksahfksajf

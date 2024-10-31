@@ -22,7 +22,9 @@ export default function PageWithoutUserId() {
           textAlign: "center",
         }}
       >
-        'This page cannot be accessed without a subdomain.'
+        'This page cannot be accessed without a subdomain. Type your
+        subdomain before localhost:3000 in the address bar and remove
+        /PageWithoutUserId.'
       </h1>
     </div>
   );

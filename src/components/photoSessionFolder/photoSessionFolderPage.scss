@@ -1,29 +1,50 @@
 .PhotoSessionFolderPage {
-  width: 95%;
-  margin: 0 auto;
+  width: 90%;
+  background: #e0e0e0;
+  padding: 2rem;
+
   &__title {
-    font-size: 3rem;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Times New Roman", serif;
+    color: black;
   }
+
   &__description {
-    font-size: 2.2rem;
+    width: 80%; /* Match description width */
+    margin: 0 auto;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-family: Georgia, serif;
+    color: #444;
+    text-align: justify;
+    margin-bottom: 2rem; /* Add space before photos */
   }
+
   &__photos {
     margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-    grid-template-rows: repeat(2, 1fr);
-    gap: 5px;
+    text-align: center;
 
     .folderPagePhoto {
       img {
         width: 100%;
-      }
-
-      &:nth-child(1) {
-        grid-column: 1 / -1; /* Span all columns */
+        max-width: 300px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        margin-top: 1.5rem;
       }
     }
   }
 }
+
+// use later for responsive design in laptop & tablet
+// display: grid;
+// grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+// grid-template-rows: repeat(2, 1fr);
+// gap: 5px;
+
+// &:nth-child(1) {
+//   grid-column: 1 / -1; /* Span all columns */
+// }

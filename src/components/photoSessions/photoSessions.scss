@@ -1,16 +1,27 @@
 .photoSessions {
+  width: 90%; /* Match width to authorInfo */
+  background: #e0e0e0; /* Set similar background color */
+
+  padding: 2rem;
   &__title {
-    font-size: 3.5rem;
+    font-size: 2.5rem; /* Match font size */
+    margin: 1rem 0;
+
+    font-weight: bold;
+    font-family: "Times New Roman", serif;
+    color: black;
 
     .title {
-      margin-top: 2rem;
       margin-left: 1rem;
     }
     .subTitle {
       text-align: right;
-      margin-right: 2rem;
+      font-style: italic; /* Use italic for a classic look */
+      font-family: Georgia, serif; /* Set matching font */
+      color: #333; /* Match subTitle color in authorInfo */
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
       font-weight: 400;
-      font-style: oblique;
     }
   }
 }
