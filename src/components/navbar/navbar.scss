@@ -72,8 +72,17 @@
     & svg {
       cursor: pointer;
       width: 40px;
-      height: 45px;
+      height: 35px;
       fill: #333;
+      transition: fill 0.3s ease;
+    }
+
+    & svg.hamburgerIconBtnCross {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      fill: #333;
+      margin-right: 1rem;
       transition: fill 0.3s ease;
     }
   }
