@@ -5,6 +5,8 @@ import { db } from "../../db";
 import { useParams } from "react-router-dom";
 import { getUserId } from "../../App";
 import Footer from "../footer/Footer";
+import { ImageGallery } from "react-image-grid-gallery";
+
 export default function PhotoSessionFolderPage() {
   const [photoSessionInfo, setPhotoSessionInfo] = useState([]);
   const [footerData, setFooterData] = useState(null);
@@ -62,12 +64,16 @@ export default function PhotoSessionFolderPage() {
         )}
 
         <div className="PhotoSessionFolderPage__photos">
-          {photoSessionInfo.photos &&
-            photoSessionInfo.photos.map((photoUrl, index) => (
-              <div key={index} className="folderPagePhoto">
-                <img src={photoUrl} alt={"photo"} />
-              </div>
-            ))}
+          {photoSessionInfo.photos && (
+            <ImageGallery
+              imagesInfoArray={photoSessionInfo.photos.map((item) => {
+                return { src: item, alt: "photo img" };
+              })}
+              columnCount={"auto"}
+              columnWidth={230}
+              gapSize={24}
+            />
+          )}
         </div>
       </div>
       <Footer footerData={footerData} />
