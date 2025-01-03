@@ -46,7 +46,7 @@ export default function PhotoSessionFolderPage() {
   useEffect(() => {
     fetchPhotoSessionInfo();
     fetchFooterData();
-  }, []);
+  }, [fetchPhotoSessionInfo]);
 
   return (
     <>

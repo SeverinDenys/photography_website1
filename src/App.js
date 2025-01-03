@@ -57,7 +57,7 @@ function App() {
 
     fetchData();
     fetchFooterData();
-  }, []);
+  }, [navigate]);
   // PUBLIC
 
   return (
