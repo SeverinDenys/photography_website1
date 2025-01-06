@@ -14,7 +14,7 @@ export default function Header({ data }) {
         </div>
         <div className="header-img">
           {data?.main_picture1 && (
-            <img src={data.main_picture1} alt={"image"} />
+            <img src={data.main_picture1} alt={"header image"} />
           )}
         </div>
       </div>

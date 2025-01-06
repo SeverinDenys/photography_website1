@@ -12,38 +12,36 @@ export default function PhotoSessionFolderPage() {
   const [footerData, setFooterData] = useState(null);
   const { photoSessionId } = useParams(); // get from index.js rout
 
-  const fetchPhotoSessionInfo = async () => {
-    try {
-      const docRef = doc(db, "photo_sessions", photoSessionId);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        console.log(docSnap.data());
-
-        setPhotoSessionInfo({ id: docSnap.id, ...docSnap.data() });
-      } else {
-        console.log("No such document!");
-        setPhotoSessionInfo(null);
-      }
-    } catch (error) {
-      console.error("Error fetching photo session: ", error);
-    }
-  };
-
-  const fetchFooterData = async () => {
-    try {
-      const userId = getUserId();
-      const docRef = doc(db, "footer", userId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setFooterData(docSnap.data());
-      }
-    } catch (error) {
-      console.error("Error fetching footer data: ", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchFooterData = async () => {
+      try {
+        const userId = getUserId();
+        const docRef = doc(db, "footer", userId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setFooterData(docSnap.data());
+        }
+      } catch (error) {
+        console.error("Error fetching footer data: ", error);
+      }
+    };
+    const fetchPhotoSessionInfo = async () => {
+      try {
+        const docRef = doc(db, "photo_sessions", photoSessionId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          console.log(docSnap.data());
+
+          setPhotoSessionInfo({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.log("No such document!");
+          setPhotoSessionInfo(null);
+        }
+      } catch (error) {
+        console.error("Error fetching photo session: ", error);
+      }
+    };
     fetchPhotoSessionInfo();
     fetchFooterData();
   }, [fetchPhotoSessionInfo]);
