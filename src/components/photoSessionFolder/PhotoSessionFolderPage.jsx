@@ -44,7 +44,7 @@ export default function PhotoSessionFolderPage() {
     };
     fetchPhotoSessionInfo();
     fetchFooterData();
-  }, [fetchPhotoSessionInfo]);
+  }, []);
 
   return (
     <>
