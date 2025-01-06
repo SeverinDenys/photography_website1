@@ -10,7 +10,11 @@ import Footer from "./components/footer/Footer";
 export const getUserId = () => {
   const subdomain = window.location.host.split(".")[0];
 
-  if (subdomain.startsWith("localhost")) return null;
+  if (
+    subdomain.startsWith("localhost") ||
+    subdomain.startsWith("photographywebsitepublic.netlify.app")
+  )
+    return null;
   else {
     return subdomain;
   }
