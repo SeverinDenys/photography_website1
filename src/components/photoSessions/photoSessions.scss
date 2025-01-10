@@ -1,10 +1,10 @@
 .photoSessions {
-  width: 90%; /* Match width to authorInfo */
-  background: #e0e0e0; /* Set similar background color */
-
+  width: 100%;
+  background: #e0e0e0;
   padding: 2rem;
+
   &__title {
-    font-size: 2.5rem; /* Match font size */
+    font-size: 2.5rem;  
     margin: 1rem 0;
 
     font-weight: bold;
@@ -13,12 +13,13 @@
 
     .title {
       margin-left: 1rem;
+      text-align: center;
     }
     .subTitle {
-      text-align: right;
-      font-style: italic; /* Use italic for a classic look */
-      font-family: Georgia, serif; /* Set matching font */
-      color: #333; /* Match subTitle color in authorInfo */
+      text-align: center;
+      font-style: italic;  
+      font-family: Georgia, serif;  
+      color: #333;  
       margin-bottom: 1rem;
       font-size: 2.5rem;
       font-weight: 400;

@@ -9,7 +9,7 @@ export default function About({ data }) {
   };
   return (
     <>
-      <div className="aboutMe">
+      <div className="aboutMe" id="aboutMe">
         {data?.main_description_title && (
           <h2 className="aboutMe__title">
             {data.main_description_title}
@@ -24,7 +24,11 @@ export default function About({ data }) {
       </div>
       <AuthorInfo data={data} />
       <div className="myWorks">
-        <button className="myWorks__Btn" onClick={navToPhotoSessions}>
+        <button
+          className="myWorks__Btn"
+          onClick={navToPhotoSessions}
+          id="myWorks"
+        >
           My Works
         </button>
       </div>

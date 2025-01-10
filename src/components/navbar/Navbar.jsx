@@ -60,16 +60,13 @@ const Navbar = () => {
 
       <ul className={isOpen ? "navbar__open" : "navbar__close"}>
         <li>
-          <a href="/">Home</a>
+          <a href="#aboutMe">About</a>
         </li>
         <li>
-          <a href="/about">About</a>
+          <a href="#myWorks">Photo Works</a>
         </li>
         <li>
-          <a href="/photo-sessions">Photo Works</a>
-        </li>
-        <li>
-          <a href="/contact">Contact me</a>
+          <a href="#footer">Contact me</a>
         </li>
       </ul>
     </nav>

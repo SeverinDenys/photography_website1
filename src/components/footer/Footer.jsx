@@ -7,7 +7,7 @@ export default function Footer({ footerData }) {
   console.log("footerData", footerData);
   return (
     <>
-      <div className="footer">
+      <div className="footer" id="footer">
         <div className="footer__container-follow">
           <h3>Write Me</h3>
           <div className="follow__icons">

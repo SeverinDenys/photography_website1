@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../db";
 import { useParams } from "react-router-dom";
 import { getUserId } from "../../App";
 import Footer from "../footer/Footer";
-import { ImageGallery } from "react-image-grid-gallery";
 
 export default function PhotoSessionFolderPage() {
   const [photoSessionInfo, setPhotoSessionInfo] = useState([]);
   const [footerData, setFooterData] = useState(null);
-  const { photoSessionId } = useParams(); // get from index.js rout
+  const { photoSessionId } = useParams(); // get from index.js route
 
   useEffect(() => {
     const fetchFooterData = async () => {
@@ -32,7 +30,6 @@ export default function PhotoSessionFolderPage() {
 
         if (docSnap.exists()) {
           console.log(docSnap.data());
-
           setPhotoSessionInfo({ id: docSnap.id, ...docSnap.data() });
         } else {
           console.log("No such document!");
@@ -63,14 +60,13 @@ export default function PhotoSessionFolderPage() {
 
         <div className="PhotoSessionFolderPage__photos">
           {photoSessionInfo.photos && (
-            <ImageGallery
-              imagesInfoArray={photoSessionInfo.photos.map((item) => {
-                return { src: item, alt: "photo img" };
-              })}
-              columnCount={"auto"}
-              columnWidth={230}
-              gapSize={24}
-            />
+            <div className="photo-grid">
+              {photoSessionInfo.photos.map((photo, index) => (
+                <div key={index} className="photo-grid-item">
+                  <img src={photo} alt={`photo ${index}`} />
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
@@ -78,5 +74,3 @@ export default function PhotoSessionFolderPage() {
     </>
   );
 }
-
-// kjhsahksahfksajf
